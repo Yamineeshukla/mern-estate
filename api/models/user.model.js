@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -9,7 +9,6 @@ const userSchema = new mongoose.Schema({
     maxlength: [30, 'Username cannot exceed 30 characters'],
     validate: {
       validator: function(v) {
-        // Example custom validation to prohibit certain usernames
         const prohibitedUsernames = ['admin', 'root', 'superuser'];
         return !prohibitedUsernames.includes(v.toLowerCase());
       },
@@ -30,14 +29,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Password is required'],
-    minlength: [8, 'Password must be at least 8 characters long'],
-    validate: {
-      validator: function(v) {
-        // Regex for password complexity: at least one uppercase letter, one lowercase letter, one digit, and one special character
-        return /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(v);
-      },
-      message: 'Password must be at least 8 characters long and include uppercase, lowercase, digit, and special character'
-    }
+    minlength: [8, 'Password must be at least 8 characters long']
   }
 }, {timestamps: true});
 
