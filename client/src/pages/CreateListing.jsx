@@ -6,6 +6,7 @@ import {
   uploadBytesResumable,
 } from 'firebase/storage';
 import { app } from '../firebase';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -27,33 +28,42 @@ export default function CreateListing() {
     parking: false,
     furnished: false,
   });
-  const [imageUploadError, setImageUploadError] = useState(false);
+  const [imageUploadError, setImageUploadError] = useState(null);
   const [uploading, setUploading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   console.log(formData);
+  
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
       setUploading(true);
-      setImageUploadError(false);
+      setImageUploadError(null);
       const promises = [];
 
-      for (let i = 0; i < files.length; i++) {
-        promises.push(storeImage(files[i]));
-      }
-      Promise.all(promises)
-        .then((urls) => {
-          setFormData({
-            ...formData,
-            imageUrls: formData.imageUrls.concat(urls),
-          });
-          setImageUploadError(false);
+      const auth = getAuth(app);
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          for (let i = 0; i < files.length; i++) {
+            promises.push(storeImage(files[i]));
+          }
+          Promise.all(promises)
+            .then((urls) => {
+              setFormData({
+                ...formData,
+                imageUrls: formData.imageUrls.concat(urls),
+              });
+              setImageUploadError(null);
+              setUploading(false);
+            })
+            .catch((err) => {
+              setImageUploadError('Image upload failed (2 mb max per image)');
+              setUploading(false);
+            });
+        } else {
+          setImageUploadError('User not authenticated');
           setUploading(false);
-        })
-        .catch((err) => {
-          setImageUploadError('Image upload failed (2 mb max per image)');
-          setUploading(false);
-        });
+        }
+      });
     } else {
       setImageUploadError('You can only upload 6 images per listing');
       setUploading(false);
@@ -66,11 +76,11 @@ export default function CreateListing() {
       const fileName = new Date().getTime() + file.name;
       const storageRef = ref(storage, fileName);
       const uploadTask = uploadBytesResumable(storageRef, file);
+
       uploadTask.on(
         'state_changed',
         (snapshot) => {
-          const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log(`Upload is ${progress}% done`);
         },
         (error) => {
@@ -84,6 +94,7 @@ export default function CreateListing() {
       );
     });
   };
+
 
   const handleRemoveImage = (index) => {
     setFormData({
