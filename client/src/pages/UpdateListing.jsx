@@ -9,13 +9,10 @@ import { app } from '../firebase';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export default function UpdateListing() {
+export default function CreateListing() {
   const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
-  const { listingId } = useParams();
-  console.log("Listing ID:", listingId); // Add this line to debug
-
-  //console.log('Listing ID:', params.listingId);
+  const params = useParams();
   const [files, setFiles] = useState([]);
   const [formData, setFormData] = useState({
     imageUrls: [],
@@ -37,31 +34,19 @@ export default function UpdateListing() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!listingId) {
-      console.error('Listing ID is undefined');
-      return;
-    }
-
     const fetchListing = async () => {
-      try {
-        const res = await fetch(`/api/listing/get/${listingId}`);
-        const data = await res.json();
-        if (data.success === false) {
-          console.log(data.message);
-          return;
-        }
-        setFormData(data);
-      } catch (error) {
-        console.error('Failed to fetch listing:', error);
+      const listingId = params.listingId;
+      const res = await fetch(`/api/listing/get/${listingId}`);
+      const data = await res.json();
+      if (data.success === false) {
+        console.log(data.message);
+        return;
       }
+      setFormData(data);
     };
 
     fetchListing();
-  }, [listingId]);
-
-  // Rest of your component code (e.g., form rendering)
-
-
+  }, []);
 
   const handleImageSubmit = (e) => {
     if (files.length > 0 && files.length + formData.imageUrls.length < 7) {
