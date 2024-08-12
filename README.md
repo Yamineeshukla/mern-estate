@@ -82,8 +82,8 @@ Follow these steps to set up the project locally:
 ## **Screenshots**
 Include screenshots of your application to showcase the interface:
 
-- **Homepage**:
-  ![Homepage Screenshot](path/to/your/homepage-screenshot.png)
+- **SignIN**:
+  ![Homepage Screenshot](assests/signIn.png)
   
 - **Property Details**:
   ![Property Details Screenshot](path/to/your/property-details-screenshot.png)
