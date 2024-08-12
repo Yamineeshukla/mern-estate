@@ -82,11 +82,17 @@ Follow these steps to set up the project locally:
 ## **Screenshots**
 Include screenshots of your application to showcase the interface:
 
-- **SignIN**:
+- **SignIN Page**:
   ![Homepage Screenshot](assests/signIn.png)
   
-- **Property Details**:
-  ![Property Details Screenshot](path/to/your/property-details-screenshot.png)
+- **Update Page**:
+  ![Property Details Screenshot](assests/update.png)
+  
+ - **Search**:
+  ![Homepage Screenshot](assests/search.png)
+  
+- **Profile Page**:
+  ![Property Details Screenshot](assests/profile.png)
 
 ## **Contributing**
 Contributions are welcome! Follow these steps to contribute:
