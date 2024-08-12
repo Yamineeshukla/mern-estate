@@ -243,9 +243,14 @@ const handleShowListings = async () => {
       <p className='text-green-700 mt-5'>
         {updateSuccess ? 'User is updated successfully!' : ''}
       </p>
-      <button onClick={handleShowListings} className='text-green-700 w-full'>
-        Show Listings
-      </button>
+<button 
+  onClick={handleShowListings} 
+  className='bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 w-full'
+>
+  Show Listings
+</button>
+
+
       <p className='text-red-700 mt-5'>
         {showListingsError ? 'Error showing listings' : ''}
       </p>
@@ -274,14 +279,22 @@ const handleShowListings = async () => {
               >
                 <p>{listing.name}</p>
               </Link>
-              <div className='flex flex-col item-center '>
-                <button onClick={() => handleListingDelete(listing._id)}
-                  className='text-red-700 
-                uppercase'>Delete</button>
-                <Link to={`/update-listing/${listing._id}`}>
-                  <button className='text-green-700 uppercase'>Edit</button>
-                </Link>
-              </div>
+              <div className='flex flex-col items-center space-y-2'>
+  <button 
+    onClick={() => handleListingDelete(listing._id)}
+    className='bg-red-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-red-600 transition duration-300 uppercase w-full'
+  >
+    Delete
+  </button>
+  <Link to={`/update-listing/${listing._id}`}>
+    <button 
+      className='bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 uppercase w-full'
+    >
+      Edit
+    </button>
+  </Link>
+</div>
+
             </div>
           ))}
         </div>
