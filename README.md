@@ -1,6 +1,6 @@
 # **Yaminee Estate - Modern Real Estate Marketplace**
 
-Welcome to **Yaminee Estate**, a cutting-edge real estate marketplace built from scratch using the MERN stack. This project is an enhanced version based on the comprehensive course, "Full-stack MERN Real Estate App: Build a Modern Marketplace."
+Welcome to **Yaminee Estate**, a cutting-edge real estate marketplace built from scratch using the MERN stack. 
 
 ## **Overview**
 **Yaminee Estate** is a full-featured real estate platform where users can browse, search, and manage property listings. The project implements advanced features like JWT authentication, Firebase integration, Google OAuth, CRUD operations, and modern search functionality. It's designed to be user-friendly, secure, and scalable.
