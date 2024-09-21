@@ -1,6 +1,6 @@
 # **Yaminee Estate - Modern Real Estate Marketplace**
 
-Welcome to **Yaminee Estate**, a cutting-edge real estate marketplace built from scratch using the MERN stack. This project is an enhanced version based on the comprehensive course, "Full-stack MERN Real Estate App: Build a Modern Marketplace."
+Welcome to **Yaminee Estate**, a cutting-edge real estate marketplace built from scratch using the MERN stack. 
 
 ## **Overview**
 **Yaminee Estate** is a full-featured real estate platform where users can browse, search, and manage property listings. The project implements advanced features like JWT authentication, Firebase integration, Google OAuth, CRUD operations, and modern search functionality. It's designed to be user-friendly, secure, and scalable.
@@ -82,11 +82,20 @@ Follow these steps to set up the project locally:
 ## **Screenshots**
 Include screenshots of your application to showcase the interface:
 
-- **Homepage**:
-  ![Homepage Screenshot](path/to/your/homepage-screenshot.png)
+- **SignIN Page**:
+  ![SignIN  Screenshot](assests/signIn.png)
   
-- **Property Details**:
-  ![Property Details Screenshot](path/to/your/property-details-screenshot.png)
+   **Home Page**:
+  ![Homepage Screenshot](assests/Home.png)
+  
+- **Update Page**:
+  ![Update Page Screenshot](assests/update.png)
+  
+ - **Search**:
+  ![Search Screenshot](assests/search.png)
+  
+- **Profile Page**:
+  ![Profile Page Screenshot](assests/profile.png)
 
 ## **Contributing**
 Contributions are welcome! Follow these steps to contribute:
@@ -96,9 +105,6 @@ Contributions are welcome! Follow these steps to contribute:
 3. Make your changes and commit them (`git commit -m 'Add new feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Open a Pull Request.
-
-## **License**
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
 
 ## **Contact**
 For any questions, feedback, or suggestions, feel free to contact me at [yamineeshukla2000@gmail.com].
